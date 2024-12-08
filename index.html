@@ -25,7 +25,7 @@
             width: 90%;
             max-width: 800px;
             height: 90%;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(218, 219, 212, 0.8);
             border-radius: 15px;
             padding: 20px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
@@ -86,6 +86,36 @@
         .content::-webkit-scrollbar-track {
             background: #f0f0f0;
         }
+
+        /* Styling Audio Player */
+        .audio-player {
+            text-align: center;
+            margin-top: 15px;
+        }
+        audio {
+            width: 100%;
+            outline: none;
+        }
+
+         /* Efek Hujan */
+         .raindrop {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.6);
+            width: 2px;
+            height: 10px;
+            animation: rain 0.5s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes rain {
+            0% {
+                transform: translateY(-100px);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -97,24 +127,55 @@
             <br><br>
             Aku punya hadiah kecil-kecilan, tapi tolong kamu download aplikasi ini dulu ya. Langkah-langkahnya:
             <ul class="steps">
-                <li>1. Unduh aplikasi Stockbit</li>
-                <li>2. Buat akun Stockbit Social</li>
-                <li>3. Pilih opsi untuk mendaftar akun trading Stockbit Sekuritas</li>
-                <li>4. Pilih RDN BCA atau RDN Bank Jago</li>
-                <li>5. Jika memilih RDN BCA, masukkan nomor rekening BCA dan nama lengkap untuk verifikasi</li>
-                <li>6. Jika memilih RDN Bank Jago, lakukan selfie sesuai petunjuk, lengkapi formulir Data</li>
-                <li>7. Pekerjaan, dan masukkan PIN dan kode OTP Bank Jago</li>
-                <li>8. Tunggu verifikasi dari Stockbit selama satu hari kerja</li>
+                <li>Unduh aplikasi Stockbit</li>
+                <li>Buat akun Stockbit Social</li>
+                <li>Pilih opsi untuk mendaftar akun trading Stockbit Sekuritas</li>
+                <li>Pilih RDN BCA atau RDN Bank Jago</li>
+                <li>Jika memilih RDN BCA, masukkan nomor rekening BCA dan nama lengkap untuk verifikasi</li>
+                <li>Jika memilih RDN Bank Jago, lakukan selfie sesuai petunjuk, lengkapi formulir Data</li>
+                <li>Pekerjaan, dan masukkan PIN dan kode OTP Bank Jago</li>
+                <li>Tunggu verifikasi dari Stockbit selama satu hari kerja</li>
             </ul>
             Jika sudah, nanti akan ku transfer beberapa saham yess ❤️
             <br><br>
             Anyway, semoga suka dengan apa yang ku beri yaaa. Aku gak pandai memilih, tapi semoga bermanfaat untuk kamu.
             Terimakasih sudah mau menjadi orang yang selama ini memberiku semangat, kapan pun dan dimanapun!
         </div>
+        <div class="audio-player">
+            <p>🎵 Happy Birth Day! 🎵</p>
+            <audio controls autoplay loop>
+                <source src="yoasobi.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung pemutar audio. Silakan unduh <a href="yaosobi.mp3">lagu ini</a>.
+            </audio>
+        </div>
         <div class="footer">
             <p>Eternally Yours,</p>
             <strong>Sugab</strong>
         </div>
     </div>
+
+    <script>
+        // Efek Hujan
+        function createRaindrops() {
+            const raindropCount = 100; // Jumlah tetesan hujan
+            const raindropsContainer = document.body;
+
+            for (let i = 0; i < raindropCount; i++) {
+                const raindrop = document.createElement('div');
+                raindrop.classList.add('raindrop');
+                
+                // Atur posisi acak
+                raindrop.style.left = `${Math.random() * 100}vw`; // Posisi horizontal acak
+                raindrop.style.animationDuration = `${Math.random() * 0.5 + 0.5}s`; // Durasi hujan acak
+                raindrop.style.animationDelay = `${Math.random() * 2}s`; // Penundaan animasi acak
+
+                raindropsContainer.appendChild(raindrop);
+            }
+        }
+
+        // Jalankan fungsi pembuatan tetesan hujan saat halaman dimuat
+        window.onload = createRaindrops;
+    </script>
+
 </body>
 </html>
