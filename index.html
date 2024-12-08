@@ -7,13 +7,14 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;700&display=swap');
 
+        /* Gaya Umum */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Quicksand', sans-serif;
+            font-family: 'Chewy', cursive;
             background: url('bung1.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: #333;
+            color: #262626;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -33,6 +34,7 @@
             flex-direction: column;
         }
 
+        /* Header */
         .header {
             font-family: 'Pacifico', cursive;
             font-size: 36px;
@@ -41,32 +43,30 @@
             margin-bottom: 20px;
         }
 
+        /* Konten */
         .content {
             flex: 1;
             overflow-y: auto;
             font-size: 16px;
             line-height: 1.8;
             color: #060606;
-            padding-right: 10px; /* Untuk scroll bar */
+            padding-right: 10px;
         }
 
-        .steps {
-            margin: 20px 0;
-            padding-left: 20px;
+        /* Gaya scrollbar */
+        .content::-webkit-scrollbar {
+            width: 8px;
         }
 
-        .steps li {
-            margin-bottom: 10px;
+        .content::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 4px;
         }
 
+        /* Footer */
         .footer {
             text-align: center;
             margin-top: 20px;
-        }
-
-        .footer p {
-            font-size: 18px;
-            color: #666;
         }
 
         .footer strong {
@@ -75,58 +75,157 @@
             font-size: 20px;
         }
 
-        /* Styling scroll bar untuk tampil premium */
-        .content::-webkit-scrollbar {
-            width: 8px;
-        }
-        .content::-webkit-scrollbar-thumb {
-            background: #d4af37;
-            border-radius: 4px;
-        }
-        .content::-webkit-scrollbar-track {
-            background: #f0f0f0;
-        }
-
-        /* Styling Audio Player */
-        .audio-player {
-            text-align: center;
-            margin-top: 15px;
-        }
-        audio {
-            width: 100%;
-            outline: none;
-        }
-
-         /* Efek Hujan */
-         .raindrop {
+        /* Timer */
+        #countdown {
             position: absolute;
-            background-color: rgba(255, 255, 255, 0.6);
-            width: 2px;
-            height: 10px;
-            animation: rain 0.5s linear infinite;
-            opacity: 0.8;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #d4af37;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 5px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes rain {
+        /* Kotak Harta Karun */
+        .treasure-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            text-align: center;
+        }
+
+        .treasure-chest {
+            width: 80px;
+            height: 80px;
+            background: url('treasure-chest-closed.png') no-repeat center center;
+            background-size: contain;
+            cursor: pointer;
+        }
+
+        .treasure-chest.open {
+            background: url('treasure-chest-open.png') no-repeat center center;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: rgba(218, 219, 212, 0.95);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .modal-content ul {
+            padding-left: 20px;
+        }
+
+        .modal-content li {
+            margin-bottom: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #f00;
+        }
+
+        /* Audio */
+        .audio-player {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            text-align: center;
+            width: 100px; /* Lebar lebih kecil */
+        }
+
+        .audio-player audio {
+            width: 100%;
+        }
+
+        .audio-player p::before {
+            content: "♪";
+            animation: spin 2s linear infinite;
+            display: inline-block;
+            margin-right: 8px;
+            color: #d4af37;
+        }
+
+        @keyframes spin {
             0% {
-                transform: translateY(-100px);
+                transform: rotate(0);
             }
             100% {
-                transform: translateY(100vh);
+                transform: rotate(360deg);
             }
         }
-
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">Hey Kub!</div>
         <div class="content">
-            Selamat Ulang Tahun yg ke 25, semoga selalu bahagia dan panjang umur, berkah di sisa umurnya, 
-            selalu menjadi orang yang baik, cantik dan gokil! 🎉✨
+            Selamat Ulang Tahun yg ke 1/4 Abad, semoga selalu bahagia dan panjang umur, berkah di sisa umurnya, 
+            selalu menjadi orang yang baik, cantik, dan gokil! 🎉✨
             <br><br>
-            Aku punya hadiah kecil-kecilan, tapi tolong kamu download aplikasi ini dulu ya. Langkah-langkahnya:
-            <ul class="steps">
+            Finally, kamu sekarang udah 25 yahahahaha, makin tua yaaa wleee, tapi gapapa, umur boleh tua, tapi tetep awet muda dan kece!
+            nyangka ga kalau hari ke hari usia makin berkembang dan bertambah ? tiba tiba ntar jadi orang sukses aja, Aamiin!!
+            <br><br>
+            Semoga apa saja yang kamu inginkan tercapai, selalu di berikan kesabaran, ketabahan dalam menghadapi apapun
+            jangan pernah menyerah di kondisi apapun ya!
+            trust me, semuanya akan berjalan dengan baik dan sesuai harapan!
+            Doa terbaik untukmu !
+            <br><br>
+            Oiyaa karna kamu sudah berhasil memecahkan teka teki nya dan sudah mengakses website ini 
+            <br><br>
+            Jika kamu lihat harta karun, klik ya !!🎁
+        </div>
+        <div class="footer">
+            <p>Eternally Yours,</p>
+            <strong>Sugab</strong>
+        </div>
+    </div>
+
+    <div id="countdown">
+        <strong>Hitung Mundur Kejutan:</strong> 
+        <span id="timer"></span>
+    </div>
+
+    <!-- Treasure Chest -->
+    <div class="treasure-container">
+        <div class="treasure-chest"></div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="treasureModal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <p>Langkah-langkah untuk mendapatkan hadiah:</p>
+            <ul>
                 <li>Unduh aplikasi Stockbit</li>
                 <li>Buat akun Stockbit Social</li>
                 <li>Pilih opsi untuk mendaftar akun trading Stockbit Sekuritas</li>
@@ -141,41 +240,53 @@
             Anyway, semoga suka dengan apa yang ku beri yaaa. Aku gak pandai memilih, tapi semoga bermanfaat untuk kamu.
             Terimakasih sudah mau menjadi orang yang selama ini memberiku semangat, kapan pun dan dimanapun!
         </div>
-        <div class="audio-player">
-            <p>🎵 Happy Birth Day! 🎵</p>
-            <audio controls autoplay loop>
-                <source src="yoasobi.mp3" type="audio/mpeg">
-                Browser Anda tidak mendukung pemutar audio. Silakan unduh <a href="yaosobi.mp3">lagu ini</a>.
-            </audio>
-        </div>
-        <div class="footer">
-            <p>Eternally Yours,</p>
-            <strong>Sugab</strong>
-        </div>
+    </div>
+
+    <!-- Audio -->
+    <div class="audio-player">
+        <p>🎵</p>
+        <audio controls autoplay loop>
+            <source src="yoasobi.mp3" type="audio/mpeg">
+            Browser Anda tidak mendukung pemutar audio. Silakan unduh <a href="yoasobi.mp3">lagu ini</a>.
+        </audio>
     </div>
 
     <script>
-        // Efek Hujan
-        function createRaindrops() {
-            const raindropCount = 100; // Jumlah tetesan hujan
-            const raindropsContainer = document.body;
+        // Timer hitung mundur 5 menit
+        function startCountdown() {
+            let timeLeft = 300; // 5 menit dalam detik
+            const timerElement = document.getElementById('timer');
+            const interval = setInterval(() => {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerElement.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                timeLeft--;
 
-            for (let i = 0; i < raindropCount; i++) {
-                const raindrop = document.createElement('div');
-                raindrop.classList.add('raindrop');
-                
-                // Atur posisi acak
-                raindrop.style.left = `${Math.random() * 100}vw`; // Posisi horizontal acak
-                raindrop.style.animationDuration = `${Math.random() * 0.5 + 0.5}s`; // Durasi hujan acak
-                raindrop.style.animationDelay = `${Math.random() * 2}s`; // Penundaan animasi acak
-
-                raindropsContainer.appendChild(raindrop);
-            }
+                if (timeLeft < 0) {
+                    clearInterval(interval);
+                    timerElement.innerText = "Waktunya Habis!";
+                }
+            }, 1000);
         }
 
-        // Jalankan fungsi pembuatan tetesan hujan saat halaman dimuat
-        window.onload = createRaindrops;
-    </script>
+        // Modal & Treasure Chest
+        const chest = document.querySelector('.treasure-chest');
+        const modal = document.getElementById('treasureModal');
+        const closeModal = document.getElementById('closeModal');
 
+        chest.addEventListener('click', () => {
+            chest.classList.add('open');
+            modal.style.display = 'flex';
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            chest.classList.remove('open');
+        });
+
+        window.onload = () => {
+            startCountdown();
+        };
+    </script>
 </body>
 </html>
