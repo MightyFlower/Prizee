@@ -188,6 +188,7 @@
             }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -258,7 +259,7 @@
     <script>
         // Timer hitung mundur 5 menit
         function startCountdown() {
-            let timeLeft = 300; // 5 menit dalam detik
+            let timeLeft = 200; // 200 detik
             const timerElement = document.getElementById('timer');
             const interval = setInterval(() => {
                 const minutes = Math.floor(timeLeft / 60);
@@ -268,11 +269,38 @@
 
                 if (timeLeft < 0) {
                     clearInterval(interval);
-                    timerElement.innerText = "Waktunya Habis!";
+                    timerElement.innerText = "❤️❤️:')❤️❤️!";
+
+                // Memicu confetti
+                launchConfetti();
                 }
             }, 1000);
         }
 
+        function launchConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { x: 0.5, y: 0.7 },
+                colors: ['#bb0000', '#ffffff', '#d4af37', '#060606']
+            });
+
+            // Ulangi confetti beberapa kali
+            const duration = 3; // Lama waktu confetti (detik)
+            const end = Date.now() + duration * 1000;
+            const interval = setInterval(() => {
+                if (Date.now() > end) {
+                    clearInterval(interval);
+                } else {
+                    confetti({
+                        particleCount: 50,
+                        startVelocity: 30,
+                        spread: 100,
+                        origin: { x: Math.random(), y: Math.random() * 0.7 },
+                    });
+                }
+            }, 250);
+        }
         // Modal & Treasure Chest
         const chest = document.querySelector('.treasure-chest');
         const modal = document.getElementById('treasureModal');
